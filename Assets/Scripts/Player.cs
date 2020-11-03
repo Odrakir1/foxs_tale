@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+
+        if(PausePanel.instance.isPaused) return;
+
         if(knockBackCounter<=0){
             
             x = Input.GetAxisRaw("Horizontal");
