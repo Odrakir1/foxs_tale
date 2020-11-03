@@ -36,7 +36,13 @@ public class LevelManager : MonoBehaviour
     IEnumerator Respawn(){
         Player.instance.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f - (1f / UIController.instance.fadeSpeed));
+        UIController.instance.FadeToBlack();
+
+        yield return new WaitForSeconds(1f / UIController.instance.fadeSpeed + .2f);
+
+        UIController.instance.FadeFromBlack();
+
         Vector3 respawnPoint = CheckpointController.instance.currentSpawnPoint;
         Player.instance.gameObject.SetActive(true);
         PlayerHealthController.instance.currentHP = 6;
