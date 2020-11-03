@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     public float fadeSpeed;
     private bool shouldFadeToBlack,shouldFadeFromBlack;
 
+    public GameObject levelCompleteText;
+
     // Start is called before the first frame update
     void Start()
     {

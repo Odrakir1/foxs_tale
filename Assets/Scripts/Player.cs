@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public float knockBackLength, knockBackForce;
     private float knockBackCounter;
 
+    public bool stopInput;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
     void Update()
     {   
 
-        if(PausePanel.instance.isPaused) return;
+        if(PausePanel.instance.isPaused || stopInput) return;
 
         if(knockBackCounter<=0){
             

@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {   
 
     public static LevelManager instance;
     public int gemsCounter;
 
-
+    public string levelToLoad;
     private void Awake() {
         instance = this;
     }
@@ -48,6 +48,30 @@ public class LevelManager : MonoBehaviour
         PlayerHealthController.instance.currentHP = 6;
         UIController.instance.UpdateHealthUI();
         Player.instance.transform.position = respawnPoint;
+    }
+
+    public void EndLevel(){
+        StartCoroutine(EndLevelCo());
+    }
+
+    public IEnumerator EndLevelCo(){
+        Player.instance.stopInput = true;
+        CameraController.instance.stopFollow = true;
+
+        UIController.instance.levelCompleteText.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        UIController.instance.FadeToBlack();
+
+        yield return new WaitForSeconds(1f);
+
+        UIController.instance.FadeFromBlack();
+        UIController.instance.levelCompleteText.SetActive(false);
+        Player.instance.stopInput = false;
+        CameraController.instance.stopFollow = false;
+
+        SceneManager.LoadScene(levelToLoad);
     }
 
 }
