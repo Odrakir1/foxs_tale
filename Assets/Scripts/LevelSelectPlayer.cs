@@ -23,28 +23,23 @@ public class LevelSelectPlayer : MonoBehaviour
 
         if(Vector3.Distance(transform.position,currentPoint.transform.position) < .1f){
             
-            Debug.Log(transform.position +"|" +currentPoint.transform.position);
-
             if(Input.GetAxisRaw("Horizontal") > .5f){
                 if(currentPoint.right != null){
                     setNextPoint(currentPoint.right);
                 }
             }
-
-
-            if(Input.GetAxisRaw("Horizontal") < -.5f){
+            else if(Input.GetAxisRaw("Horizontal") < -.5f){
                 if(currentPoint.left != null){
                     setNextPoint(currentPoint.left);
                 }   
             }
 
-            if(Input.GetAxisRaw("Vertical") > .5f){
+            else if(Input.GetAxisRaw("Vertical") > .5f){
                 if(currentPoint.up != null){
                     setNextPoint(currentPoint.up);
                 }   
             }
-
-            if(Input.GetAxisRaw("Vertical") < -.5f){
+            else if(Input.GetAxisRaw("Vertical") < -.5f){
                 if(currentPoint.down != null){
                     setNextPoint(currentPoint.down);
                 }   
