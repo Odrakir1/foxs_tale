@@ -25,7 +25,11 @@ public class LevelSelectManager : MonoBehaviour
     }
 
     public IEnumerator LoadLevelCo(){
+
+        LSUIController.instance.FadeToBlack();
+        
         yield return new WaitForSeconds(1f);
+        
         SceneManager.LoadScene(player.currentPoint.levelToLoad);
     }
 }

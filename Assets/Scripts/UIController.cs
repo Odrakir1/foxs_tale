@@ -23,9 +23,9 @@ public class UIController : MonoBehaviour
     void Start()
     {
         
-    instance = this;
+        instance = this;
 
-    FadeFromBlack();
+        FadeFromBlack();
 
     }
 
@@ -33,7 +33,6 @@ public class UIController : MonoBehaviour
     void Update()
     {
         if(shouldFadeToBlack){
-            Debug.Log("hmm");
             fadeScreen.color = new Color(fadeScreen.color.r,fadeScreen.color.g,fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a,1f,fadeSpeed * Time.deltaTime));
 
             if(fadeScreen.color.a == 1f){ 
@@ -43,7 +42,6 @@ public class UIController : MonoBehaviour
 
         if(shouldFadeFromBlack){
 
-            Debug.Log("hmm");
             fadeScreen.color = new Color(fadeScreen.color.r,fadeScreen.color.g,fadeScreen.color.b,Mathf.MoveTowards(fadeScreen.color.a,0f,fadeSpeed * Time.deltaTime));
 
             if(fadeScreen.color.a == 0f){ 
