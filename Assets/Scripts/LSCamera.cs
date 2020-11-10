@@ -14,7 +14,7 @@ public class LSCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         
         float posX = Mathf.Clamp(target.position.x,minPos.x,maxPos.x);
