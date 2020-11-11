@@ -66,6 +66,8 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlock",1);
+
         UIController.instance.FadeFromBlack();
         UIController.instance.levelCompleteText.SetActive(false);
         Player.instance.stopInput = false;

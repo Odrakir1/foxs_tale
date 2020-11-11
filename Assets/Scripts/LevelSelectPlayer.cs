@@ -18,7 +18,7 @@ public class LevelSelectPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerPrefs.SetInt("1: The Beginning_unlock",1);
     }
 
     // Update is called once per frame
@@ -50,8 +50,11 @@ public class LevelSelectPlayer : MonoBehaviour
                 }   
             }
 
-            if(currentPoint.isLevel)
+                Debug.Log(!currentPoint.isLocked);
+            if(currentPoint.isLevel && currentPoint.levelToLoad != "" && !currentPoint.isLocked)
             {
+                 LSUIController.instance.ShowInfo(currentPoint);
+
                 if(Input.GetButtonDown("Jump"))
                 {
                     levelLoading = true;
@@ -68,6 +71,7 @@ public class LevelSelectPlayer : MonoBehaviour
 
     public void setNextPoint(MapPoint nextPoint){
         currentPoint = nextPoint;
+        LSUIController.instance.HideInfo();
     }
 
 }
